@@ -5,7 +5,7 @@ import os,time,datetime
 app = Flask(__name__)
 
 def job1():
-    print('------- start job --------\n'
+    print('------- start job --------\n')
     print(datetime.datetime.now())
 
 workdir='/sdcard/'
