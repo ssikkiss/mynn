@@ -17,14 +17,14 @@ sch.init_app(app)
 def hello():
     return "Hello Worldgggghhhgg!"
 
-@application.route('/addjob')
+@app.route('/addjob')
 def addjob():
     d1=datetime.datetime.now()
     d2=d1+datetime.timedelta(seconds=10) 
     sch.add_job(job1,'date',run_date=d2,id='job1')
     sch.start()
     return 'add job susscessful'
-@application.route('/deljob')
+@app.route('/deljob')
 def deljob():
     sch.pause_job('job1')
     sch.remove_job('job')
