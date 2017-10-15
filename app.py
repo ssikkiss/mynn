@@ -9,8 +9,8 @@ workdir='/sdcard/'
 def hello():
     return "Hello Worldgggghhhgg!"
 
-@app.route("/file/listdir")
-def listdir():
+@app.route("/file/dir")
+def dir():
     ret=''
     try:
         ret=os.listdir(workdir)
