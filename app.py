@@ -11,7 +11,7 @@ def job1():
 workdir='/sdcard/'
 
 sch = APScheduler()
-#sch.api_enabled = True
+sch.api_enabled = True
 sch.init_app(app)
 @app.route("/")
 def hello():
@@ -22,13 +22,14 @@ def addjob():
     if not sch.running:
         sch.start()
     d1=datetime.datetime.now()
-    d2=d1+datetime.timedelta(seconds=10) 
+    d2=d1+datetime.timedelta(seconds=20) 
     sch.add_job(func=job1,id='job1',trigger='date',run_date=d2)
     return 'add job susscessful'
 @app.route('/deljob')
 def deljob():
     jobs=sch.get_jobs()
     if len(jobs)>0:
+        sch.pause_job('job1')
         sch.remove_job('job1')
     return 'del job susscessful'
 @app.route("/file/dir")
