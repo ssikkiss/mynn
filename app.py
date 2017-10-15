@@ -9,13 +9,18 @@ workdir='/sdcard/'
 def hello():
     return "Hello Worldgggghhhgg!"
 
+@app.route("/file/listdir")
+def listdir():
+    ret=''
+    try:
+        ret=os.listdir(workdir)
+    except:
+        ret='error'
+    return ret
 @app.route("/file/listdir/<src>")
 def listdir(src):
     ret=''
-    if src=='.':
-        zsrc=workdir
-    else:
-        zsrc=workdir+src
+    zsrc=workdir+src
     try:
         ret=os.listdir(zsrc)
     except:
