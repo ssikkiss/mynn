@@ -12,8 +12,11 @@ def hello():
 @app.route("/file/listdir/<src>")
 def listdir(src):
     ret=''
-    try:
+    if src=='.':
+        zsrc=workdir
+    else:
         zsrc=workdir+src
+    try:
         ret=os.listdir(zsrc)
     except:
         ret='error'
