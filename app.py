@@ -49,8 +49,8 @@ def create(src):
 @app.route('/file/write',methods=['post'])
 def write():
     ret=''
-    filedata=request.form('filedata','')
-    src=request.form('filename','')
+    filedata=request.form['filedata']
+    src=request.form['filename']
     if src=='':
         return 'error:no file name'
     zsrc=workdir+src
@@ -81,11 +81,11 @@ def read(src):
     r=f.read()
     f.close()
     ret='<form method="post" action="/file/write">\n'
-    ret+='<textarea name=filedata id=filedata rows=30 cols=60><br>'
+    ret+='<textarea name=filedata id=filedata rows=30 cols=60>'
     ret+=r
-    ret+='</textarea>\n'
+    ret+='</textarea><br>'
     ret+='<input type=text name=filename id=filename value="'+src+'"></input><br>'
-    ret+='<input type=submit value="write"></input>'
+    ret+='<input type=submit value="   write   "></input><br>'
     return ret
 
 
