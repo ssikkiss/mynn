@@ -9,7 +9,7 @@ workdir='/sdcard/'
 def hello():
     return "Hello Worldgggghhhgg!"
 
-@app.route("file/listdir/<src>")
+@app.route("/file/listdir/<src>")
 def listdir(src):
     ret=''
     try:
@@ -18,7 +18,7 @@ def listdir(src):
     except:
         ret='error'
     return ret
-@app.route('file/remove/<src>')
+@app.route('/file/remove/<src>')
 def remove(src):
     ret=''
     try:
@@ -27,7 +27,7 @@ def remove(src):
     except:
         ret='error'
     return ret
-@app.route('file/write')
+@app.route('/file/write')
 def write():
     ret=''
     filedata=request.form('filedata','')
@@ -53,7 +53,7 @@ def rename(src,dst):
     os.rename(zsrc,zdst)
     return 'ok'
 
-@app.route('file/read/<src>')
+@app.route('/file/read/<src>')
 def read(src):
     zsrc=workdir+src
     if not os.path.exists(zsrc):
