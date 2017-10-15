@@ -80,12 +80,12 @@ def read(src):
     f=open(zsrc,'rt')
     r=f.read()
     f.close()
-    ret='<form action="/file/write">\n'
-    ret+='<textarea name=filedata id=filedata>'
+    ret='<form method="post" action="/file/write">\n'
+    ret+='<textarea name=filedata id=filedata rows=20 cols=60>'
     ret+=r
     ret+='</textarea>\n'
     ret+='<input type=text name=filename id=filename ></input>'
-    ret+='<input type=submit>write</input>'
+    ret+='<input type=submit value="write"></input>'
     return ret
 
 
