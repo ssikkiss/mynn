@@ -27,6 +27,17 @@ def remove(src):
     except:
         ret='error'
     return ret
+@app.route('/file/create/<src>')
+def create(src):
+    if not src:
+        return 'error:no file name'
+    zsrc=workdir+src
+    if os.path.exists(zsrc):
+        return 'error: file has been exists'
+    f=open(zsrc,'wt')
+    f.write('')
+    f.close()
+    return 'ok'
 @app.route('/file/write')
 def write():
     ret=''
