@@ -19,6 +19,8 @@ def hello():
 
 @app.route('/addjob')
 def addjob():
+    if sch.isrunning:
+        return 'err: job has exists'
     d1=datetime.datetime.now()
     d2=d1+datetime.timedelta(seconds=10) 
     sch.add_job(func=job1,id='job1',trigger='date',run_date=d2)
@@ -26,8 +28,9 @@ def addjob():
     return 'add job susscessful'
 @app.route('/deljob')
 def deljob():
-    sch.pause_job('job1')
-    sch.remove_job('job')
+    jobs=sch.get_jobs()
+    if len(jobs)>0:
+        sch.remove_job('job1')
     sch.shutdown()
     return 'del job susscessful'
 @app.route("/file/dir")
