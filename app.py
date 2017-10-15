@@ -30,7 +30,7 @@ def deljob():
     jobs=sch.get_jobs()
     if len(jobs)>0:
         sch.pause_job('job1')
-        sch.remove_job('job1')
+        sch.delete_job('job1')
     return 'del job susscessful'
 @app.route("/file/dir")
 def dir():
