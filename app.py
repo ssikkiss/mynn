@@ -19,7 +19,7 @@ def hello():
 
 @app.route('/addjob')
 def addjob():
-    if sch.isrunning:
+    if sch.running:
         return 'err: job has exists'
     d1=datetime.datetime.now()
     d2=d1+datetime.timedelta(seconds=10) 
