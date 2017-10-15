@@ -13,7 +13,7 @@ def hello():
 def dir():
     ret=''
     try:
-        ret=os.listdir(workdir)
+        ret=str(os.listdir(workdir))
     except:
         ret='error'
     return ret
@@ -22,7 +22,7 @@ def listdir(src):
     ret=''
     zsrc=workdir+src
     try:
-        ret=os.listdir(zsrc)
+        ret=str(os.listdir(zsrc))
     except:
         ret='error'
     return ret
