@@ -21,10 +21,10 @@ def hello():
 def addjob():
     if sch.running:
         return 'err: job has exists'
+    sch.start()
     d1=datetime.datetime.now()
     d2=d1+datetime.timedelta(seconds=10) 
     sch.add_job(func=job1,id='job1',trigger='date',run_date=d2)
-    sch.start()
     return 'add job susscessful'
 @app.route('/deljob')
 def deljob():
