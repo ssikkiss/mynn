@@ -19,7 +19,7 @@ def listdir(src):
         ret='error'
     return ret
 @app.route('file/remove/<src>')
-def remove(src)
+def remove(src):
     ret=''
     try:
         os.remove(workdir+src)
@@ -40,7 +40,7 @@ def write():
     f=open(zsrc,'wt')
     f.write(filedata)
     f.close()
-        
+    ret='ok'
     return ret
 @app.route('/file/rename/<src>/<dst>')
 def rename(src,dst):
