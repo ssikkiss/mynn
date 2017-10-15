@@ -1,14 +1,35 @@
 from flask import Flask,request
-import os
+from flask_apscheduler import APScheduler
+import os,time,datetime
 
 app = Flask(__name__)
 
+def job1():
+    print('------- start job --------\n'
+    print(datetime.datetime.now())
+
 workdir='/sdcard/'
 
+sch = APScheduler()
+#sch.api_enabled = True
+sch.init_app(app)
 @app.route("/")
 def hello():
     return "Hello Worldgggghhhgg!"
 
+@application.route('/addjob')
+def addjob():
+    d1=datetime.datetime.now()
+    d2=d1+datetime.timedelta(seconds=10) 
+    sch.add_job(job1,'date',run_date=d2,id='job1')
+    sch.start()
+    return 'add job susscessful'
+@application.route('/deljob')
+def deljob():
+    sch.pause_job('job1')
+    sch.remove_job('job')
+    sch.shutdown()
+    return 'del job susscessful'
 @app.route("/file/dir")
 def dir():
     ret=''
