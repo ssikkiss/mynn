@@ -1,14 +1,20 @@
 from flask import Flask,request
 from flask_apscheduler import APScheduler
-import os,time,datetime
+import os,time,datetime,subprocess
 
 app = Flask(__name__)
+workdir='/sdcard/'
 
 def job1():
     print('------- start job --------\n')
     print(datetime.datetime.now())
+    f=workdir+'nn.py'
+    if os.path.exists(f):
+        ret=subprocess.call('python nn.py',shell=True)
+        print(ret)
+    else:
+        print('err:nn.py not exists')
 
-workdir='/sdcard/'
 
 sch = APScheduler()
 sch.api_enabled = True
