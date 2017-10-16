@@ -10,7 +10,7 @@ def job1():
     print(datetime.datetime.now())
     f=workdir+'nn.py'
     if os.path.exists(f):
-        ret=subprocess.call('python nn.py',shell=True)
+        ret=subprocess.call('python /sdcard/nn.py',shell=True)
         print(ret)
     else:
         print('err:nn.py not exists')
