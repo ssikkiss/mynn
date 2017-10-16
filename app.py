@@ -14,6 +14,7 @@ def job1():
         print(ret)
     else:
         print('err:nn.py not exists')
+    print(datetime.datetime.now())
     print('------ end job -------')
 
 
